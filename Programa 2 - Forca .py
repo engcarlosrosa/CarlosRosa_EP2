@@ -7,6 +7,7 @@ Created on Sat Mar 21 20:06:50 2015
 
 import turtle
 
+e = " _____ "
 
 def body():
     
@@ -78,6 +79,7 @@ def body():
         base.left(45)
         base.forward(100)
         base.color("black")
+        
     
 window = turtle.Screen()    # Usa a biblioteca de turtle graphics
 window.bgcolor("white")     # cria uma janela
@@ -99,6 +101,10 @@ base.right(90)
 base.forward(50)
 base.color("black")
 
+base.penup()
+base.setpos(50,200)
+base.write(len(keyword)*e,"Arial")
+
 erros = 0
 acertos = 0
 while erros<7:
@@ -106,6 +112,7 @@ while erros<7:
 
     if guess in keyword:
         acertos += 1
+        
     else:
         erros+=1
         body()

@@ -8,74 +8,76 @@ Created on Sat Mar 21 20:06:50 2015
 import turtle
 
 
-def head():
-    base = turtle.Turtle()          #Constroi a cabeca
-    base.speed(5)
-    base.penup()
-    base.setpos(-225,110)
-    base.pendown()
-    base.circle(20)
-    base.color("black")
-    
 def body():
-    base = turtle.Turtle()           #Constroi o tronco
-    base.speed(5)
-    base.penup()
-    base.setpos(-225,110)
-    base.pendown()
-    base.left(270)
-    base.forward(90)
-    base.color("black")
+    
+    if erros == 1:
+        base = turtle.Turtle()          #Constroi a cabeca
+        base.speed(5)
+        base.penup()
+        base.setpos(-225,110)
+        base.pendown()
+        base.circle(20)
+        base.color("black")
+    
+    if erros == 2:
+        base = turtle.Turtle()           #Constroi o tronco
+        base.speed(5)
+        base.penup()
+        base.setpos(-225,110)
+        base.pendown()
+        base.left(270)
+        base.forward(90)
+        base.color("black")
 
-def left_arm():
-    base = turtle.Turtle()           #Constroi o braco esquerdo
-    base.speed(5)
-    base.penup()
-    base.setpos(-225,90)
-    base.pendown()
-    base.left(225)
-    base.forward(40)
-    base.color("black")
+    if erros == 3:
+        base = turtle.Turtle()           #Constroi o braco esquerdo
+        base.speed(5)
+        base.penup()
+        base.setpos(-225,90)
+        base.pendown()
+        base.left(225)
+        base.forward(40)
+        base.color("black")
     
-def right_arm():
-    base = turtle.Turtle()            #Constroi o braco direito
-    base.speed(5)
-    base.penup()
-    base.setpos(-225,90)
-    base.pendown()
-    base.left(315)
-    base.forward(40)
-    base.color("black")
+    if erros == 4:
+        base = turtle.Turtle()            #Constroi o braco direito
+        base.speed(5)
+        base.penup()
+        base.setpos(-225,90)
+        base.pendown()
+        base.left(315)
+        base.forward(40)
+        base.color("black")
 
-def left_leg():
-    base = turtle.Turtle()        #Constroi a perna esquerda
-    base.speed(5)
-    base.penup()
-    base.setpos(-225,20)
-    base.pendown()
-    base.left(240)
-    base.forward(60)
-    base.color("black")
+    if erros == 5:
+        base = turtle.Turtle()        #Constroi a perna esquerda
+        base.speed(5)
+        base.penup()
+        base.setpos(-225,20)
+        base.pendown()
+        base.left(240)
+        base.forward(60)
+        base.color("black")
     
-def right_leg():
-    base = turtle.Turtle()        #Constroi a perna direita
-    base.speed(5)
-    base.penup()
-    base.setpos(-225,20)
-    base.pendown()
-    base.left(300)
-    base.forward(60)
-    base.color("black")    
-    
-def sword():
-    base = turtle.Turtle()            #Constroi a lamina da espada
-    base.speed(5)
-    base.penup()
-    base.setpos(-200,65)
-    base.pendown()
-    base.left(45)
-    base.forward(100)
-    base.color("black")
+    if erros == 6:
+        base = turtle.Turtle()        #Constroi a perna direita
+        base.speed(5)
+        base.penup()
+        base.setpos(-225,20)
+        base.pendown()
+        base.left(300)
+        base.forward(60)
+        base.color("black")    
+        
+    if erros == 7:
+        base = turtle.Turtle()            #Constroi a lamina da espada
+        base.speed(5)
+        base.penup()
+        base.setpos(-200,65)
+        base.pendown()
+        base.left(45)
+        base.forward(100)
+        base.color("black")
     
 window = turtle.Screen()    # Usa a biblioteca de turtle graphics
 window.bgcolor("white")     # cria uma janela
@@ -97,47 +99,17 @@ base.right(90)
 base.forward(50)
 base.color("black")
 
-guess1 = window.textinput("First guess", "Digite uma letra.")
+erros = 0
+acertos = 0
+while erros<7:
+    guess = window.textinput("Guess", "Write a letter.")
 
-if guess1 not in keyword:
-    head()
-else:
-    pass
-
-guess2 = window.textinput("Second guess", "Digite uma letra.")
-
-if guess2 not in keyword:
-    body()
-else:
-    pass
-
-guess3 = window.textinput("Second guess", "Digite uma letra.")
-if guess3 not in keyword:
-    left_arm()
-else:
-    pass
-
-guess4 = window.textinput("Second guess", "Digite uma letra.")
-if guess4 not in keyword:
-    right_arm()
-else:
-    pass
-
-guess5 = window.textinput("Second guess", "Digite uma letra.")
-if guess5 not in keyword:
-    left_leg()
-else:
-    pass
-
-guess6 = window.textinput("Second guess", "Digite uma letra.")
-if guess6 not in keyword:
-    right_leg()
-else:
-    pass
-
-guess7 = window.textinput("Second guess", "Digite uma letra.")
-if guess7 not in keyword:
-    sword()
-else:
-    pass
-
+    if guess in keyword:
+        acertos += 1
+    else:
+        erros+=1
+        body()
+        print(erros)
+window.exitonclick()
+            
+            

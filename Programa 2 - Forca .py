@@ -4,10 +4,18 @@ Created on Sat Mar 21 20:06:50 2015
 
 @author: Carlos
 """
-
+import random
 import turtle
 
-e = " _____ "
+archive=open("entrada.txt",encoding="utf-8")
+s1=archive.readlines()
+keyword0= random.choice(s1)
+keyword = keyword0.strip()
+print(keyword)
+
+
+e = " __ "
+
 
 def body():
     
@@ -85,7 +93,7 @@ window = turtle.Screen()    # Usa a biblioteca de turtle graphics
 window.bgcolor("white")     # cria uma janela
 window.title("Forca")
 
-keyword=window.textinput("Forca", "Texto Pergunta")
+#keyword=window.textinput("Forca", "Texto Pergunta")
 
 base = turtle.Pen()   # Constrói a Forca
 base.speed(5)
@@ -107,16 +115,23 @@ base.write(len(keyword)*e,"Arial")
 
 erros = 0
 acertos = 0
-while erros<7:
+while erros<7 and acertos<len(keyword):
     guess = window.textinput("Guess", "Write a letter.")
 
     if guess in keyword:
-        acertos += 1
-        
+            for i in range(len(keyword)):
+                if guess == keyword[i]:
+                    base.penup()
+                    base.setpos(50+i*19,200)                    
+                    base.write(guess,"Arial")
+                    acertos+=1
+                    
     else:
         erros+=1
         body()
         print(erros)
+        
+
 window.exitonclick()
             
             

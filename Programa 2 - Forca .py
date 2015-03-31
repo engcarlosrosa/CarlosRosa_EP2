@@ -167,7 +167,6 @@ while len(s1) > 0:
             base.penup()
             base.setpos(px+i*16,py)
             base.write("  ", False, font=("Arial",14))
-            
             base.hideturtle()
         else:
             base.penup()
@@ -206,21 +205,21 @@ while len(s1) > 0:
                         base.write(keyword[i],font=("Arial", 14))
                         acertos+=1
                         keywordguessed.append(keyword[i])
-                    elif guess == "i" and keyword[i] == "í":
+                    elif guess == "i" and keyword[i]== "í":
                         base.penup()
                         base.setpos(-240+i*16,-150)
                         base.pensize(15)                    
                         base.write(keyword[i],font=("Arial", 14))
                         acertos+=1
                         keywordguessed.append(keyword[i])
-                    elif guess == "o" and keyword[i] == "ó":
+                    elif guess == "o" and keyword[i]== "ó":
                         base.penup()
                         base.setpos(-240+i*16,-150)
                         base.pensize(15)                    
                         base.write(keyword[i],font=("Arial", 14))
                         acertos+=1
                         keywordguessed.append(keyword[i])
-                    elif guess == "o" and keyword[i] == "ô":
+                    elif guess == "o" and keyword[i]== "ô":
                         base.penup()
                         base.setpos(-240+i*16,-150)
                         base.pensize(15)                    
@@ -231,29 +230,17 @@ while len(s1) > 0:
                         base.penup()
                         base.setpos(140,150)
                         base.pensize(10)
-                        base.write("Você perdeu")
+                        base.write("Você perdeu!",font=("Arial", 20))
                     elif acertos == len(keyword):
                         base.penup()
                         base.setpos(140,150)
                         base.pensize(10)
-                        base.write("Você ganhou.")
-        if erros==7 or acertos == len(keyword):
-            opcao = window.textinput("Fim do jogo", "Quer jogar novamente? Sim ou Não?")
-            if opcao == "Sim" or opcao == "sim"  or opcao == "SIM"  or opcao == "s":
-                acertos = 9
-                erros = 9
-                base.reset()
-                
-            if opcao == "Não" or opcao == "não" or opcao == "Nao" or opcao == "nao" or opcao == "NAO" or opcao == "Não" or opcao == "n":
-                erros += 1
-                acertos += 1
-                            
-                        
+                        base.write("Você ganhou!",font=("Arial", 20))
         else:
             erros+=1
             body()
             print(erros)
-       
+            
         base.penup()
         base.setpos(160,180)
         base.pensize(10)
@@ -275,6 +262,30 @@ while len(s1) > 0:
         scoreboardright.setpos(210,190)
         scoreboardright.write(acertos-keyword.count(" "))
         scoreboardright.hideturtle()
+
+    if erros==8 or acertos == len(keyword):
+        opcao = window.textinput("Fim do jogo", "Quer jogar novamente? Sim ou Não?")
+        if opcao == "Sim" or opcao == "sim"  or opcao == "SIM"  or opcao == "s":
+            acertos = 9
+            erros = 9
+            scoreboarderror.reset()
+            scoreboardright.reset()
+            base.reset()
+            
+        if opcao == "Não" or opcao == "não" or opcao == "Nao" or opcao == "nao" or opcao == "NAO" or opcao == "Não" or opcao == "n":
+            base.reset()
+            base.penup()
+            base.setpos(-200,180)
+            base.pensize(10)
+            base.write("Clique na tela para terminar",font=("Arial", 28))
+            break            
+            
+            
+             
+                        
+
+       
+
     
     
                 
